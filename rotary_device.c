@@ -93,7 +93,7 @@ static int __init rotary_init(void)
 
 static void __exit rotary_exit(void)
 {
-  platform_device_unregister(&rotary_device_1);
+  platform_device_unregister(&rotary_encoder);
 }
 
 
