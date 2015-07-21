@@ -45,7 +45,7 @@ static void rotary_device_pdev_release(struct device *dev)
   */
 }
 
-static struct platform_device rotary_device_1 = 
+static struct platform_device rotary_encoder = 
   {
     .name = "rotary-encoder", // the DRIVER name, not the device name.
     .id = 0, 
@@ -78,10 +78,10 @@ static int __init rotary_init(void)
 
   // TODO: int platform_add_devices(struct platform_device **pdevs, int ndev);
   pr_info("initing rotary device A=%d B=%d\n", rotary_1[0], rotary_1[1]);
-  pdata = (struct rotary_encoder_platform_data *) rotary_device_1.dev.platform_data;
+  pdata = (struct rotary_encoder_platform_data *) rotary_encoder.dev.platform_data;
   pdata->gpio_a = rotary_1[0];
   pdata->gpio_b = rotary_1[1];
-  ret = platform_device_register(&rotary_device_1);
+  ret = platform_device_register(&rotary_encoder);
   if (ret < 0) {
     pr_err(DRV_NAME \
 	   ":    platform_device_register(1) returned %d\n",
